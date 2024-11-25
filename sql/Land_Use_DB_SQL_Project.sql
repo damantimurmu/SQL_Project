@@ -40,7 +40,7 @@ WHERE
     Category = 'Cropland';
         
 /*  3.  Find out;
-(i)  Top Countries with the largest area of more than 10000 hectares used for 'Planted Forest' in 2022. 
+(i)  Top Countries with the largest area of more than 10000 hectares used for 'Planted Forest' in 2022.
 (ii) Top six countries in terms of area of 'Inland waters' or 'Coastal waters' for 2022. 
 */
 SELECT DISTINCT
@@ -67,7 +67,7 @@ WHERE
 ORDER BY Value_Ha DESC
 LIMIT 6;
 
-/* 4. What is the maximum and minimum value of the area recorded in the year 2022? */
+/* 4. What is the maximum and minimum area value recorded in 2022? */
 SELECT 
     MAX(Value_Ha) AS Max_LandUse_Area,
     MIN(Value_Ha) AS Min_LandUse_Area
@@ -81,6 +81,38 @@ WHERE
    o	Filtering data using 'WHERE' clause
    o	Sorting data using 'ORDER BY'
    o	Limiting result sets using 'LIMIT'
+*/
+
+-- -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+/*                  II. MODERATE
++--------------------------------------------------------------------------+
+|    o	Clauses:                                                           |
++-------------------------+------------------------------------------------+
+|      GROUP BY           |  Groups data by one or more columns.           |
+|      SUBQUERY	          |  Uses a query as a condition or data source.   |
+|       HAVING	          |  Filters grouped data based on conditions.     |
+|         IN	          |  Checks if a value is in a list of values.     |
+| JOIN(INNER,LEFT,RIGHT)  |  Combines data from multiple tables.           |
++-------------------------+------------------------------------------------+
+|    o  String Functions:                                                  |
++-------------------------+------------------------------------------------+
+|       ROUND	          |  Rounds a number to a specified decimal place. |
+|       CONCAT	          |  Concatenates two or more strings.             |
+|     UPPER, LOWER        |  Converts strings to uppercase or lowercase.   |
+|       LENGTH	          |  Returns the length of a string.               |
++--------------------------------------------------------------------------+
+|   o  Other Functions:                                                    |
++-------------------------+------------------------------------------------+
+|      IF NULL            |  Returns a value if a column is NULL.          |
+|   IS NULL, IS NOT NULL  |  Checks if a column is NULL or NOT NULL.       |
++--------------------------------------------------------------------------+
+*/
+
+
+/* 5. Calculate the total Carbon Stock Density of Forest Land in the following countries:
+'India', 'Brazil', 'United States of America', 'China', 'South Africa', 'Egypt', 'Nigeria'
+NOTE: Total carbon stock(mt)/ Total area(Ha) = Carbon stock density(mt/Ha)
 */
 
 SELECT 
@@ -102,7 +134,7 @@ WHERE
 GROUP BY c.Country
 ORDER BY Carbon_Stock_Density_mtHa DESC;
 
-/* 6. Find 10 countries with a value of more than 10,000 hectares area with category combined with it's respective year. */
+/* 6. Find 10 countries with a value of more than 10,000 hectares area with category combined with its respective year. */
 SELECT 
     Country,
     CONCAT(Category, ' - ', Year) AS Category,
@@ -180,7 +212,7 @@ ORDER BY
 	Total_Land_Use_Area DESC, 
          Total_Land_Use_Indicators DESC LIMIT 10;
     
-/* 9. What is the total carbon stock value recorded from year 2012 to 2022 of the following countries:
+/* 9. What is the total carbon stock value recorded from the year 2012 to 2022 of the following countries:
 ‘India', 'Pakistan', 'Australia', 'Canada', 'Germany', 'Lebanon', 'Switzerland'?
 */
 
@@ -271,10 +303,10 @@ HAVING
 	AND SUM(Imputed_Value) > 0 
     AND SUM(Estimated_Value) > 0;
 
--- Results for year other than 2022 is given seperately in other file.
+-- Results for years other than 2022 are given separately in another file.
 
-/* 11. Determine total number of times each category accounted for values
-       and ranked them on the basis of total value count for each category.
+/* 11. Determine the total number of times each category accounted for values
+       and ranked them based on the total value count for each category.
 */
 WITH CategoryCounts AS (
      SELECT d.Category,
@@ -322,4 +354,4 @@ LIMIT 10;
 	o	Query Optimization – Tuning queries for performance.
     */
     
-    -- ----------------------------------------------------------- /* END OF SQL PROJECT */ ----------------------------------------------------------------------------
+    -- ------------------------------------------------------------------------------- /* END OF SQL PROJECT */ ----------------------------------------------------------------------------------------------------------
