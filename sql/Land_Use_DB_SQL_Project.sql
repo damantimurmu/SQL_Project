@@ -21,7 +21,7 @@ SELECT
 FROM
     DOMAIN;
     
-/* 2. (i) Calculate total agricultural land from India.
+/* 2. (i) Calculate the total agricultural land from India.
       (ii) Calculate the Average value of Cropland Use.
    */
 SELECT 
@@ -40,8 +40,8 @@ WHERE
     Category = 'Cropland';
         
 /*  3.  Find out;
-(i)  Top Countries with largest area more than 10000 hectare used for 'Planted Forest' in year 2022. 
-(ii) Top six countries in terms of area of 'Inland waters' or 'Coastal waters' for year 2022. 
+(i)  Top Countries with the largest area of more than 10000 hectares used for 'Planted Forest' in 2022. 
+(ii) Top six countries in terms of area of 'Inland waters' or 'Coastal waters' for 2022. 
 */
 SELECT DISTINCT
     (Country) AS Top_Country_with_Planted_Forest_Use, Value_Ha
@@ -67,7 +67,7 @@ WHERE
 ORDER BY Value_Ha DESC
 LIMIT 6;
 
-/* 4. What is the maximum and minimun value of area recorded in year 2022? */
+/* 4. What is the maximum and minimum value of the area recorded in the year 2022? */
 SELECT 
     MAX(Value_Ha) AS Max_LandUse_Area,
     MIN(Value_Ha) AS Min_LandUse_Area
@@ -114,7 +114,7 @@ HAVING Value_Ha > 10000
 ORDER BY Value_Ha
 LIMIT 10;	
 
-/* 7. Calculate top 5 major change in Arable land of a country from year 2012 to 2022. */
+/* 7. Calculate the top 5 major changes in the Arable land of a country from the year 2012 to 2022. */
 WITH ArableLU_2022 AS (SELECT DISTINCT
         Country,
         Value_Ha
@@ -225,13 +225,13 @@ WHERE c1.Country = 'India' ORDER BY c1.Year DESC;
 +----------------------------------+----------------------------------------------------+
 | WINDOW FUNCTIONS: (ROW_NUMBER,   | Performs calculations over a set of rows.          |
 |   (RANK, DENSE_RANK,  etc.)      |                                                    |
-|    UNION / UNION ALL   	       | Combines results of multiple queries.              |
+|    UNION / UNION ALL   	   | Combines results of multiple queries.              |
 |    COMMON EXPRESSION TABLE (CTE) | Combine with with multiple tables.                 |
 |    PIVOT     	                   | Rotates data from rows to columns.                 |
 +----------------------------------+----------------------------------------------------+
 |    o	Analytical Functions:                                                           |
 +----------------------------------+----------------------------------------------------+
-|      LEAD, LAG, NTILE 	       |                                                    |
+|      LEAD, LAG, NTILE 	   |                                                    |
 +----------------------------------+----------------------------------------------------+
 |    o  Other Functions:                                                                |
 +----------------------------------+----------------------------------------------------+
@@ -240,7 +240,7 @@ WHERE c1.Country = 'India' ORDER BY c1.Year DESC;
 */
 
 /* 10. Determine how many times each category accounted for Official, Imputed, or Estimated values,
-       and compute the total value count for each category in year 2022.
+       and compute the total value count for each category in the year 2022.
 */
 
 WITH Flag_Descriptions AS (
