@@ -3,6 +3,38 @@
 /* Comprehensive list of SQL clauses, functions, and queries categorized into easy, moderate, and hard groups
 based on their level of difficulty:*/
 
+/*                    I. EASY
++--------------------------------------------------------------------------------+
+|    o	Clauses:                                                                 |
++-------------------------+------------------------------------------------------+
+|      SELECT             |   Retrieves data from a database table.              |
+|      FROM	          |   Specifies the source table(s).                     |
+|      WHERE	          |   Filters rows based on conditions.                  |
+|      ORDER BY	          |   Sorts results.                                     |
+|      AND, OR, NOT       |   Logical operators for filtering data.              |
+|      DISTINCT           |   Filter unique values from result set of a query.   |
+|      LIMIT              |   Limits the number of rows returned.                |
+|      DESC               |   Sorts the query result in descending order         |
++-------------------------+------------------------------------------------------+
+|    o  Aggregate Functions:                                                     |
++-------------------------+------------------------------------------------------+
+|      COUNT	          |   Counts the number of rows.                         |
+|      SUM                |   Calculates the sum of a column.                    | 
+|      AVG	          |   Calculates the average of a column.                |
+|      MIN, MAX           |   Returns the maximum or minimum value of a column.  |
++--------------------------------------------------------------------------------+
+|   o  Alias:                                                                    |
++--------------------------------------------------------------------------------+
+|      AS: Renames the column and table temporarily for the query output.        |
++--------------------------------------------------------------------------------+
+*/
+
+/* 1. (i)  Show data from table 'Domain'.
+	  (ii) Count the values from the following columns.
+           (a)  Country
+           (b)  Element and category
+*/
+
 SELECT 
     *
 FROM
