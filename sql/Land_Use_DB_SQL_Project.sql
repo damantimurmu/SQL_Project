@@ -30,7 +30,7 @@ based on their level of difficulty:*/
 */
 
 /* 1. (i)  Show data from table 'Domain'.
-	  (ii) Count the values from the following columns.
+      (ii) Count the values from the following columns.
            (a)  Country
            (b)  Element and category
 */
