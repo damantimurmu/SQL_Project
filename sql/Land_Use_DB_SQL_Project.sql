@@ -35,6 +35,7 @@ based on their level of difficulty:*/
            (b)  Element and category
 */
 
+-- (i)
 SELECT 
     *
 FROM
@@ -56,6 +57,8 @@ FROM
 /* 2. (i) Calculate the total agricultural land from India.
       (ii) Calculate the Average value of Cropland Use.
    */
+
+-- (i)
 SELECT 
     SUM(Value_Ha) AS Total_Agriculture_Land
 FROM
@@ -63,7 +66,8 @@ FROM
 WHERE
     Country = 'India'
         AND Category = 'Agriculture';
-        
+
+-- (ii)
 SELECT 
     AVG(Value_Ha) AS Average_Cropland_Use
 FROM
@@ -75,6 +79,8 @@ WHERE
 (i)  Top Countries with the largest area of more than 10000 hectares used for 'Planted Forest' in 2022.
 (ii) Top six countries in terms of area of 'Inland waters' or 'Coastal waters' for 2022. 
 */
+
+--(i)
 SELECT DISTINCT
     (Country) AS Top_Country_with_Planted_Forest_Use, Value_Ha
 FROM
@@ -99,7 +105,8 @@ WHERE
 ORDER BY Value_Ha DESC
 LIMIT 6;
 
-/* 4. What is the maximum and minimum area value recorded in 2022? */
+/* 4. What is the maximum and minimum area value recorded in 2022?
+*/
 SELECT 
     MAX(Value_Ha) AS Max_LandUse_Area,
     MIN(Value_Ha) AS Min_LandUse_Area
@@ -157,7 +164,7 @@ FROM
         INNER JOIN
     Area a ON c.Country = a.Country
 WHERE
-    c.Country IN ('India' , 'Brazil',
+    c.Country IN ('India', 'Brazil',
         'United States of America',
         'China',
         'South Africa',
@@ -166,19 +173,24 @@ WHERE
 GROUP BY c.Country
 ORDER BY Carbon_Stock_Density_mtHa DESC;
 
-/* 6. Find 10 countries with a value of more than 10,000 hectares area with category combined with its respective year. */
+
+/* 6. Find 10 countries with a value of more than 10,000 hectares area with category combined with its respective year.
+*/
+
 SELECT 
     Country,
     CONCAT(Category, ' - ', Year) AS Category,
     ROUND(SUM(Value_Ha), 2) AS Value_Ha
 FROM
     AREA
-GROUP BY Country , Category , Year
+GROUP BY Country, Category, Year
 HAVING Value_Ha > 10000
 ORDER BY Value_Ha
 LIMIT 10;	
 
-/* 7. Calculate the top 5 major changes in the Arable land of a country from the year 2012 to 2022. */
+/* 7. Calculate the top 5 major changes in the Arable land of a country from the year 2012 to 2022.
+*/
+
 WITH ArableLU_2022 AS (SELECT DISTINCT
         Country,
         Value_Ha
@@ -210,7 +222,8 @@ ORDER BY
     Change_in_Arable_Land DESC
 LIMIT 5;
 
-/* 8. Calculate the total land use of Countries with the category ‘Naturally regenerated forest’. */
+/* 8. Calculate the total land use of Countries with the category ‘Naturally regenerated forest’.
+*/
 
 WITH Area_of_NRF AS (SELECT Country AS Country_Ha, 
         ROUND(SUM(Value_Ha), 2) AS Total_Land_Use_Area
@@ -226,8 +239,7 @@ NRF_as_Indicators AS (
     WHERE 
 		Category = 'Naturally regenerating forest'
     GROUP BY 
-		Country
-)
+		Country)
 SELECT 
     Area_of_NRF.Country_Ha AS Country,
     Total_Land_Use_Area,
@@ -281,7 +293,7 @@ WHERE c1.Country = 'India' ORDER BY c1.Year DESC;
    o
 */
 
--- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     /*                  II. HARD
 +---------------------------------------------------------------------------------------+
@@ -318,8 +330,7 @@ WITH Flag_Descriptions AS (
     JOIN 
 		Domain d ON f.Country_code = d.Country_code
     WHERE 
-		d.Category IS NOT NULL
-)
+		d.Category IS NOT NULL)
 SELECT 
     Category,
     SUM(Official_Value) AS Official_Value_Count,
@@ -364,12 +375,12 @@ WITH CategoryCounts AS (
         
 RankedCategories AS ( 
 	SELECT Category, 
-		   Total_Count
+	       Total_Count
     FROM CategoryCounts)
     
 SELECT 
-	Category, \
-		Total_Count,
+	Category,
+	Total_Count,
 DENSE_RANK() OVER (ORDER BY Total_Count DESC) AS Ranks
 FROM 
 	RankedCategories
