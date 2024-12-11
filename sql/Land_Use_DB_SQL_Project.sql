@@ -1,5 +1,7 @@
 /*USE LAND_USE_DB;
 
+-- SQL Project - Land Use: Data Integration and Analysis
+
 /* Comprehensive list of SQL clauses, functions, and queries categorized into easy, moderate, and hard groups
 based on their level of difficulty:*/
 
