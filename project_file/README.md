@@ -1,4 +1,5 @@
-SQL Project: Land Use: Integration and Analysis
+# SQL Project:
+## Land Use: Integration and Analysis
 
 ![1](https://github.com/user-attachments/assets/f474f4db-adff-47ec-a97c-bb3c19df8ce7)
 
@@ -41,3 +42,9 @@ SQL Project: Land Use: Integration and Analysis
 ![20](https://github.com/user-attachments/assets/abf10d64-5646-452a-ac0d-55e2d990604b)
 
 ![21](https://github.com/user-attachments/assets/67543260-bbfa-4368-8007-e06af3aca30d)
+
+## Entity Relationship Diagram (ERD)
+
+![ER Diagram](https://github.com/user-attachments/assets/0491c4e4-7e86-4a89-adb2-fb8f95485c30)
+
+
